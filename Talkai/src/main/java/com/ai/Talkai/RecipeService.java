@@ -29,10 +29,10 @@ public class RecipeService {
                 "cuisine", cuisine,
                 "dietaryRestrictions", dietaryRestrictions
         );
-        Prompt prompt = promptTemplate.create(params);
+       
 
-        Prompt request = promptTemplate.create(params);
-        return chatModel.call(request)
+        Prompt prompt = promptTemplate.create(params);
+        return chatModel.call(prompt)
                 .getResult()
                 .getOutput()
                 .getText();

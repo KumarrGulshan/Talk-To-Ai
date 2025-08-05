@@ -3,6 +3,7 @@ package com.ai.Talkai;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ai.image.ImageResponse;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,11 +56,14 @@ public class GenAiController {
 //        return (ImageResponse) imageUrls;
 //    }
 
-    @GetMapping("recipe-creator")
-    public String CreateRecipe(@RequestParam String ingredients,
-                                      @RequestParam(defaultValue = "any") String cuisine,
-                                      @RequestParam(defaultValue = "") String dietaryRestrictions){
-        return recipeService.CreateRecipe(ingredients,cuisine,dietaryRestrictions);
+    @GetMapping("/recipe-creator")
+    public ResponseEntity<String> createRecipe(@RequestParam String prompt) {
+        System.out.println("Received prompt: " + prompt);
+
+        // Simulate recipe generation logic
+        String recipe = "Here’s a recipe based on: " + prompt;
+
+        return ResponseEntity.ok(recipe);
     }
 
 
